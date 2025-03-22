@@ -1,4 +1,5 @@
-import './CarItem.css'
+import { route } from "preact-router";
+import "./CarItem.css";
 
 export type CarItemProps = {
   id: number;
@@ -10,6 +11,7 @@ export type CarItemProps = {
 };
 
 export default function CarItem({
+  id,
   brand,
   model,
   year,
@@ -24,9 +26,13 @@ export default function CarItem({
     return imageUrl;
   };
 
+  const handleClick = () => {
+    route(`/cars/${id}`);
+  };
+
   if (!isGridView) {
     return (
-      <div className="card mb-3">
+      <div className="card mb-3" onClick={handleClick}>
         <h5 className="card-title">{model}</h5>
       </div>
     );

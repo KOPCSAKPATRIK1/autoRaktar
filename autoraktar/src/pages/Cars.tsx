@@ -17,26 +17,30 @@ const Cars = () => {
 
   useEffect(() => {
     // Adatok kiolvasása localStorage-ból
-    const storedCars = localStorage.getItem('carData');
-    
+    const storedCars = localStorage.getItem("carData");
+
     if (storedCars) {
       // Ha van adat, betöltjük
       setCars(JSON.parse(storedCars));
     } else {
       // Ha még nincs, akkor az alapértelmezett adatokat mentjük
-      localStorage.setItem('carData', JSON.stringify(defaultCars));
+      localStorage.setItem("carData", JSON.stringify(defaultCars));
       setCars(defaultCars);
     }
   }, []);
-  
+
   return (
     <div>
       <Header />
       <div className="container">
-        <ViewToggle onViewChange={setIsGridView}/>
-        <div className={isGridView 
-          ? "row row-cols-1 row-cols-md-2 row-cols-lg-3" 
-          : "row row-cols-1"}>
+        <ViewToggle onViewChange={setIsGridView} />
+        <div
+          className={
+            isGridView
+              ? "row row-cols-1 row-cols-md-2 row-cols-lg-3"
+              : "row row-cols-1"
+          }
+        >
           {cars.map((car) => (
             <CarItem
               key={car.id}

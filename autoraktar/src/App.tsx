@@ -1,13 +1,14 @@
-import Router, { Route } from 'preact-router';
-import Cars from './pages/Cars';
+import Router, { Route } from "preact-router";
+import Cars from "./pages/Cars";
+import CarDetail from "./components/CarDetail";
 
 export function App() {
   return (
     <div>
       <Router>
-        {/* Alapértelmezett redirect a cars oldalra */}
         <Route path="/" component={Cars} url="/cars" />
         <Route path="/cars" component={Cars} />
+        <Route path="/cars/:id" component={CarDetail} />
       </Router>
     </div>
   );
